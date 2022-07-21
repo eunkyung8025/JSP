@@ -7,19 +7,20 @@ import java.util.List;
 public class EmpDAO extends DAO {
 	
 	
-	public void upadateMember(String name, String pass, String role) {
+	public int upadateMember(String name, String pass, String role) {
 		String sql="update members "
 				+ "set member_password=?, "
 				+ "	   member_role=? "
 				+ "where member_id=?";
 		connect();
+		int r=0;
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, pass);
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r+"건 변경됨.");
 
 		} catch (SQLException e) {
@@ -28,6 +29,7 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
+		return r;
 		
 		
 	}
@@ -35,9 +37,11 @@ public class EmpDAO extends DAO {
 	
 	//user_name, user_pass, role -> 입력
 	
-	public void insertMember(String name, String pass, String role) {
+	public int insertMember(String name, String pass, String role) {
 		String sql="insert into members values(?,?,?)";
 		connect();
+		
+		int r=0;
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
@@ -45,7 +49,7 @@ public class EmpDAO extends DAO {
 			pstmt.setString(2,pass);
 			pstmt.setString(3,role);
 			
-			int r = pstmt.executeUpdate(); //insert, update, delete
+			r = pstmt.executeUpdate(); //insert, update, delete
 			System.out.println(r+"건 입력됨");
 			
 		} catch (SQLException e) {
@@ -54,7 +58,7 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-		
+		return r;
 				
 	}
 	
