@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html/get.html</title>
+<style>
+#container {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+	<h3>get방식요청-수정</h3>
+	<form action="../addMember" method='get'>
+		UserName: <input type="text" id="name" name="user_name"><br>
+		PassWord: <input type="password" id="pass" name="user_pass"><br>
+		Role :<select name="role" id="role">
+			<option value="0">관리자</option>
+			<option value="1">사용자</option>
+		</select> <br> <input type="submit" id="submit" value="send"><br>
+	</form>
+	</div>
+	<script>
+		//form.submit
+		let frm = document.querySelector('form');
+		frm.addEventListener('submit', function(e) {
+			//페이지 이동을 못하게 submit 막음
+			let name = document.querySelector('input[name="user_name"]').value;
+			let pwd = document.querySelector('input[name="user_pass"]').value;
+			let role = document.querySelector('select[name="role"]').value;
+			if (name == "" || pwd == "" || role == "") {
+				e.preventDefault();
+				alert('값을 입력하세요');
+				return; //function 강제 종료
+			}
+		})
+		console.log(frm);
+
+	</script>
+</body>
+</html>
