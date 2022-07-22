@@ -9,15 +9,20 @@
 	margin: 0 auto;
 	text-align: center;
 }
+label {
+		display : inline-bolck;
+		width : 80px;
+		padding-bottom : 10px;
+}
 </style>
 </head>
 <body>
 	<div id="container">
 	<h3>Post방식요청-추가</h3>
 	<form action="../addMember" method='post'>
-		UserName : <input type="text" id="name" name="user_name"><br>
-		PassWord : <input type="password" id="pass" name="user_pass"><br>
-		Role :<select name="role" id="role">
+		<label>UserName :</label> <input type="text" id="name" name="user_name"><br>
+		<label>PassWord :</label> <input type="password" id="pass" name="user_pass"><br>
+		<label>Role :</label><select name="role" id="role">
 			<option value="0">관리자</option>
 			<option value="1">사용자</option>
 		</select> <br> <input type="submit" id="submit" value="send"><br>

@@ -7,21 +7,23 @@ import java.util.List;
 public class EmpDAO extends DAO {
 	
 	
-	public int upadateMember(String name, String pass, String role) {
+	public boolean upadateMember(String name, String pass, String role) {
 		String sql="update members "
 				+ "set member_password=?, "
 				+ "	   member_role=? "
 				+ "where member_id=?";
 		connect();
-		int r=0;
+		
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, pass);
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			r = pstmt.executeUpdate();
+			int r = pstmt.executeUpdate();
 			System.out.println(r+"건 변경됨.");
+			if (r>0) 
+				return true;
 
 		} catch (SQLException e) {
 			
@@ -29,38 +31,35 @@ public class EmpDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-		return r;
-		
+		return false;
 		
 	}
 	
 	
 	//user_name, user_pass, role -> 입력
 	
-	public int insertMember(String name, String pass, String role) {
+	public boolean insertMember(String name, String pass, String role) {
 		String sql="insert into members values(?,?,?)";
 		connect();
 		
-		int r=0;
 		try {
 			pstmt=conn.prepareStatement(sql);
-			
 			pstmt.setString(1,name);
 			pstmt.setString(2,pass);
 			pstmt.setString(3,role);
-			
-			r = pstmt.executeUpdate(); //insert, update, delete
+			int r = pstmt.executeUpdate(); //insert, update, delete
 			System.out.println(r+"건 입력됨");
-			
+			if (r>0) 
+				return true;
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		return r;
-				
+		return false;
 	}
+	
+
 	
 	public List<Employee> getEmpInfo(String name) {
 		String sql="select * from employees where first_name=?";

@@ -21,37 +21,17 @@ public class AddMemberServ extends HttpServlet {
 		//get:수정 post:입력
 		//DB에 입력하는 기능		
 		EmpDAO dao= new EmpDAO();
+		boolean isTrue=false;
 		if(req.getMethod().toUpperCase().equals("GET")) {
-			dao.upadateMember(name, pass, role);
-			int up = dao.upadateMember(name, pass, role);
-			if(up!=0) {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('계정이등록되었습니다.');</script>");
-				out.flush();
-			} else {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('전송실패.');</script>");
-				out.flush();
+			isTrue= dao.upadateMember(name, pass, role); 
 
-			}
 		} else {
 			dao.insertMember(name, pass, role);
-			int ins = dao.upadateMember(name, pass, role);
-			if(ins!=0) {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('계정이등록되었습니다.');</script>");
-				out.flush();
-			} else {
-				resp.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = resp.getWriter();
-				out.println("<script>alert('전송실패.');</script>");
-				out.flush();
-			}
 		}
+		if(isTrue)	
 		resp.getWriter().print("Completed.");
+		else	
+		resp.getWriter().print("Failed.");
 		
 	}
 	

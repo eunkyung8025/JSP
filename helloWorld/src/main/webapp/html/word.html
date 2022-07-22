@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <style>
+    #show {
+      width: 300px;
+      height: 370px;
+      background-color: rgb(233, 233, 233);
+    }
+
+    #show>span {
+      display: inline-block;
+      width: 80px;
+      height: 25px;
+      background-color: rgb(235, 235, 235);
+      border:1px solid rgb(83, 83, 83);
+      padding: 2px;
+      margin:2px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" name="userInput" id="userInput">
+  <div id="show"></div>
+  <script>
+    <!-- //Lorem :의미없는 문장 -->
+    let words =`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laboriosam qui velit ullam quis temporibus iste est eum quisquam ratione corrupti, sunt sequi iusto ab deserunt facere dolores nulla vel.`;
+
+    let wordList = words.split(' ');
+    let show = document.getElementById('show');
+    // <!-- split 함수 : 문자열을 포함한 배열을 리턴해줌 -->
+    for (let word of wordList) {
+    let span = document.createElement('span');
+    span.innerText=word; 
+    show.append(span);
+    }
+    //change 이벤트를 달고 이 놈을 화면에서 안보이게 
+    //중복되는게 있으면 화면에서 지움...
+
+    // document.querySelector('#show>span:nth-child(1)').remove();
+    //   //혹은
+    // document.querySelector('#show>span:nth-child(1)').style.display='none';
+
+    let input = document.querySelector('#userInput');
+    let sps = document.querySelectorAll('span');
+    input.onchange=removeworld;
+
+    function removeworld() {
+      for(let s of sps) {
+        if(s.innerText==input.value) {
+          s.remove();
+        }
+      }
+    }
+
+  
+
+
+  </script>
+
+
+</body>
+
+</html>
