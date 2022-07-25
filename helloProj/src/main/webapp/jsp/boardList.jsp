@@ -38,5 +38,8 @@
 		%>
 		</tbody>
 	</table>
+
+	<a href="addBoard.jsp">
+	<input type="submit" value="글작성"]></a>
 </body>
 </html>

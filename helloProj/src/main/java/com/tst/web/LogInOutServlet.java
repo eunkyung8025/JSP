@@ -3,6 +3,7 @@ package com.tst.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,14 @@ public class LogInOutServlet extends HttpServlet {
 			  //세션이 있으나 id를 불러왔을 때 세션 값이 null일 경우
 			session.setAttribute("id", id);
 			//id라는 값을 지정하겠다 (setAttribute하겠다)
-			out.print("로그인을 완료했습니다.");
+//			out.print("로그인을 완료했습니다.");
+			
+			//getServletContext라는 메소드로 getRequestDispatcher요청정보를 가져올 디스페쳐 부름
+			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/jsp/boardList.jsp");
+			//요청 재실행
+			rd.forward(req, resp);
+	
+			
 			
 		} else {
 			//세션이 없을 경우
