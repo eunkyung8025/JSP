@@ -18,7 +18,6 @@
   	BoardVO vo=dao.getBoard(Integer.parseInt(bno)); //"3"=>3
 	
   %>
-
   <!-- 글번호, 제목, 내용, 작성자, 작성일자, 조회수 ★ 까지 다 나오도록 추가..  -->
 	<thead>
 
@@ -32,8 +31,18 @@
 	</thead>
 	
 	</table>
-	
+	<%
+		//String loginId= (String) session.getAttribute("loginId");
+		//if(loginId!=null && loginId.equals(vo.getWriter())) {
+	%>
+	<a href="updateForm.jsp?bno=<%=vo.getBoardId() %>">수정화면</a>
+	<a href="deleteForm.jsp?bno=<%=vo.getBoardId() %>">삭제하기</a>
+	<% 			
+		//}	
+	%>
 	<a href="boardList.jsp">글목록으로</a>
+
+	
 	
 </body>
 </html>

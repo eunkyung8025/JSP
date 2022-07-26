@@ -13,7 +13,7 @@
 	vo.setWriter(writer);
 	
 	BoardDAO dao=new BoardDAO();
-	dao.inserBoard(vo);
+	dao.insertBoard(vo);
 
 	out.print("completed.");
 	response.sendRedirect("boardList.jsp");
