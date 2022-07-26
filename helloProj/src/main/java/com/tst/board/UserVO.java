@@ -5,6 +5,9 @@ public class UserVO {
 	private String id;
 	private String passwd;
 	private String name;
+	
+	
+	
 	public String getId() {
 		return id;
 	}

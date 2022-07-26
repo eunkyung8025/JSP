@@ -37,6 +37,7 @@
 	%>
 	<a href="updateForm.jsp?bno=<%=vo.getBoardId() %>">수정화면</a>
 	<a href="deleteForm.jsp?bno=<%=vo.getBoardId() %>">삭제하기</a>
+	<a href="insertCom.jsp">댓글달기</a>
 	<% 			
 		//}	
 	%>
