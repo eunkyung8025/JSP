@@ -19,6 +19,8 @@ public class MemberSearchController implements Controller {
 				Utils.forward(req, resp, "memberView/memberSearch.jsp");
 			} else if (job.equals("update")) {
 				Utils.forward(req, resp, "memberView/memberUpdate.jsp");
+			} else if (job.equals("delete")) {
+				Utils.forward(req, resp, "memberView/memberDelete.jsp");
 			}
 			return; // 리턴구문을 만나면 메소드는 중단됨
 		}
@@ -34,12 +36,13 @@ public class MemberSearchController implements Controller {
 		}
 		
 		if (job.equals("search")) {
-
 			Utils.forward(req, resp, "memberResult/memberSearchOutput.jsp");
 		} else if (job.equals("update")) {
 			Utils.forward(req, resp, "memberView/memberUpdate.jsp");
+		} else if(job.equals("delete")) {
+			Utils.forward(req, resp, "memberView/memberDelete.jsp");
 		}
-
+ 
 //		utils.forward메소드 만들어 활용하기
 //		try {
 //			req.getRequestDispatcher("memberResult/memberSearchOutput.jsp").forward(req, resp);			
