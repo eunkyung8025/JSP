@@ -34,7 +34,8 @@ public class MemberService {
 		dao.updateMember(vo);
 	}
 	//회원정보 삭제
-	public void deleteMember(String id) {
-		dao.deleteMember(id);
+	public boolean deleteMember(String id) {
+		
+		return dao.deleteMember(id);
 	}
 }

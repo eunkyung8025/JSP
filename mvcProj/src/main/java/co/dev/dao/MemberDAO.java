@@ -137,7 +137,7 @@ public class MemberDAO {
 	}
 	
 	//삭제 메소드 추가
-	public void deleteMember(String id) {
+	public boolean deleteMember(String id) {
 		String sql= "delete from member where id= ?";
 		connect();
 		
@@ -146,13 +146,16 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			int r=pstmt.executeUpdate();
 			System.out.println(r+"건 삭제.");
+			if (r!=0) {
+				return true;
+			} 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		
+		return false;
 		
 	}
 }

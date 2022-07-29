@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import co.dev.service.MemberService;
-import co.dev.vo.MemberVO;
 
 
 public class FrontController extends HttpServlet {
@@ -34,6 +30,10 @@ public class FrontController extends HttpServlet {
 		mappings.put("/memberDelete.do", new MemberDeleteController());
 		mappings.put("/memberJson.do", new MemberJsonController());
 
+		//ajax입력
+		mappings.put("/addMemberAjax.do", new AddMemberAjaxController());
+		mappings.put("/removeMemberAjax.do", new DeleteMemberAjaxController());
+		
 	}
 	
 	@Override

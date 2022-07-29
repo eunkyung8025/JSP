@@ -33,7 +33,7 @@ public class MemberJsonController implements Controller {
 			JsonObject jobj= new JsonObject();
 			jobj.addProperty("id", vo.getId()); // jobj.addProperty(문자열,문자열) 형태
 			jobj.addProperty("name", vo.getName());
-			jobj.addProperty("pass", vo.getPasswd());
+			jobj.addProperty("passwd", vo.getPasswd());
 			jobj.addProperty("mail", vo.getMail());
 			
 			//jary 추가
