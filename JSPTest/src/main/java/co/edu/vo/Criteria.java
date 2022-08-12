@@ -8,7 +8,7 @@ public class Criteria {
 	public Criteria() {
 		//pageNum =1;
 		//moount =10;
-		this(1,10);
+		this(1,2);
 	}
 	
 	public Criteria(int pageNum, int amount) {

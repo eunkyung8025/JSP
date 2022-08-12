@@ -39,6 +39,8 @@ public class FrontController extends HttpServlet {
 		mappings.put("/insertBoard.do", new InsertBoardControl()); // 게시글 등록처리
 		mappings.put("/boardList.do", new BoardListControl()); // 게시글 목록
 		mappings.put("/boardListPaging.do", new BoardListPagingControl()); //페이징 처리 게시글
+		mappings.put("/cartList.do", new CartListControl());
+		mappings.put("/cartUpdate.do", new CartUpdateControl());
 	}
 
 	@Override

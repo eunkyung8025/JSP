@@ -32,5 +32,10 @@ public class MemberVO {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", passwd=" + passwd + ", name=" + name + ", mail=" + mail + "]";
+	}
+	
 	
 }

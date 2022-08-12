@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.dev.mybatisdb.memberMapper">
+  <select id="getMember" parameterType="string" resultType="co.dev.vo.MemberVO">
+    select * from member where id = #{id}
+  </select>
+  
+  <select id="getMemberList" resultType="co.dev.vo.MemberVO">
+    select * from member order by id
+  </select>
+  
+  <!-- 추가할때는 insert로 써줘야함, id도 필수 -->
+  <insert id = "insertMember" parameterType="co.dev.vo.MemberVO">
+  	insert into member(id, passwd, name, mail) values (#{id}, #{passwd},#{name}, #{mail})
+  </insert>
+  <!-- #뒤에 있는 것은 데이터 베이스에 든 컬럼값 -->
+  <update id="updateMember" parameterType="co.dev.vo.MemberVO">
+  	update member set name=#{name}, passwd=#{passwd}, mail=#{mail}
+  	where id=#{id}
+  </update>
+  <delete id="deleteMember">
+  	delete from member where id=#{id}
+  </delete>
+  
+</mapper>

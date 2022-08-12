@@ -3,6 +3,7 @@ package co.dev.service;
 import java.util.List;
 
 import co.dev.dao.MemberDAO;
+import co.dev.dao.MemberDAOMybatis;
 import co.dev.vo.MemberVO;
 
 //업무처리를 해주는 비지니스 영역
@@ -10,7 +11,11 @@ public class MemberService {
 
 	//싱글톤 방식으로
 	private static MemberService instance=new MemberService();
-	MemberDAO dao = new MemberDAO();
+	//MemberDAO dao = new MemberDAO(); //JDBC쿼리처리
+	//ㄴ> 마이바티스 배웠으니 이렇게 바뀌어야지 ▼
+	MemberDAOMybatis dao = MemberDAOMybatis.getInstance(); //Mybatis 처리
+	
+	
 	private MemberService() {}
 	public static MemberService getInstance() {
 		return instance;
